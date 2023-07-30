@@ -248,7 +248,7 @@ namespace URS
                     }
                     else
                     {
-                        UnityEngine.Debug.LogError("Ã»ÓĞÊÕ¼¯µ½dpµÄÒÀÀµ"+ dp);
+                        UnityEngine.Debug.LogError("æ²¡æœ‰æ”¶é›†åˆ°dpçš„ä¾èµ–"+ dp);
                     }
                  }
                 b.FileSize = (ulong)new FileInfo(Path.Combine(outerFolderPath, b.Name)).Length;

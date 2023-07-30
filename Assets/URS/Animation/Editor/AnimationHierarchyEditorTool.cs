@@ -47,7 +47,7 @@ namespace CGF.Editor.Tools
     /// \endenglish
     /// \spanish
     /// <summary>
-    /// Herramienta que permite canviar la ruta de la jerarquía de las animaciones de un clip de animación.
+    /// Herramienta que permite canviar la ruta de la jerarquÃ­a de las animaciones de un clip de animaciÃ³n.
     /// </summary>
     /// \endspanish
     public class CGFAnimationHierarchyEditorTool : EditorWindow

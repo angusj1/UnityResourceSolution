@@ -25,17 +25,17 @@ using MHLab.Patch.Core.Utilities;
 
 public class BuildTaskRegenerateAssetBundleName : BuildTask
 {
-    public const long MAX_COMBINE_SHARE_AB_ITEM_SIZE = 500*1024 * 8; // 500K ÎÄ¼şÌå»ıĞ¡ÓÚÕâ¸öÊıÁ¿²ÅÄÜºÏ²¢
-    public const long MAX_COMBINE_SHARE_AB_SIZE = 1024 * 1024 * 8; // 1M ×îÖÕºÏ²¢µÄÄ¿±ê´óĞ¡
+    public const long MAX_COMBINE_SHARE_AB_ITEM_SIZE = 500*1024 * 8; // 500K æ–‡ä»¶ä½“ç§¯å°äºè¿™ä¸ªæ•°é‡æ‰èƒ½åˆå¹¶
+    public const long MAX_COMBINE_SHARE_AB_SIZE = 1024 * 1024 * 8; // 1M æœ€ç»ˆåˆå¹¶çš„ç›®æ ‡å¤§å°
 
-    public const long MIN_NO_NAME_COMBINE_SIZE= 32 * 1024 * 8; // 32K ×îÖÕºÏ²¢µÄÄ¿±ê´óĞ¡
+    public const long MIN_NO_NAME_COMBINE_SIZE= 32 * 1024 * 8; // 32K æœ€ç»ˆåˆå¹¶çš„ç›®æ ‡å¤§å°
 
 
-   // public const long MAX_COMBINE_SHARE_NO_NAME = 60 * 1024 * 8; // 60K Ã»ÓĞ°üÃûµÄ×î´óÌå»ı 
-   // public const int MAX_COMBINE_SHARE_NO_NAME_REFERENCE_COUNT = 7; // Ã»ÓĞ°üÃûµÄ×î¶àµÄÒıÓÃ¼ÆÊı
+   // public const long MAX_COMBINE_SHARE_NO_NAME = 60 * 1024 * 8; // 60K æ²¡æœ‰åŒ…åçš„æœ€å¤§ä½“ç§¯ 
+   // public const int MAX_COMBINE_SHARE_NO_NAME_REFERENCE_COUNT = 7; // æ²¡æœ‰åŒ…åçš„æœ€å¤šçš„å¼•ç”¨è®¡æ•°
 
-  //  public const int MIN_COMBINE_AB_SIZE_2 = 100 * 1024 * 8;//  100K Ã»ÓĞ°üÃûµÄ×î´óÌå»ı 
-    public const int MAX_COMBINE_SHARE_MIN_REFERENCE_COUNT = 3;//×î´óµÄÒıÓÃ¼ÆÊı
+  //  public const int MIN_COMBINE_AB_SIZE_2 = 100 * 1024 * 8;//  100K æ²¡æœ‰åŒ…åçš„æœ€å¤§ä½“ç§¯ 
+    public const int MAX_COMBINE_SHARE_MIN_REFERENCE_COUNT = 3;//æœ€å¤§çš„å¼•ç”¨è®¡æ•°
     public override void BeginTask()
     {
         base.BeginTask();
@@ -59,11 +59,11 @@ public class BuildTaskRegenerateAssetBundleName : BuildTask
         var bundleManifest = GetData<IBundleBuildResults>(CONTEXT_BUNDLE_RESULT);
         Dictionary<string, ABInfo> allCombines = new Dictionary<string, ABInfo>();
 
-        int allShareCount = 0; //ËùÓĞµÄshare ab µÄÊıÁ¿
-        int allShareCanCombine = 0; // ËùÓĞsize ºÏ¸ñµÄab
-        int allShareRemoveByNoName = 0; // ÒòÎª size Ì«Ğ¡£¬ref count Ì«ÉÙ ·ÅÆúºÏ²¢£¬·ÅÆú°üÃû
-        int allShareRmoveByRefrenceCountTooFew = 0;// ÒòÎª ref count Ì«ÉÙ ·ÅÆúºÏ²¢
-        int allFinalCombine = 0;// ×îÖÕºÏ²¢µÄÊıÁ¿
+        int allShareCount = 0; //æ‰€æœ‰çš„share ab çš„æ•°é‡
+        int allShareCanCombine = 0; // æ‰€æœ‰size åˆæ ¼çš„ab
+        int allShareRemoveByNoName = 0; // å› ä¸º size å¤ªå°ï¼Œref count å¤ªå°‘ æ”¾å¼ƒåˆå¹¶ï¼Œæ”¾å¼ƒåŒ…å
+        int allShareRmoveByRefrenceCountTooFew = 0;// å› ä¸º ref count å¤ªå°‘ æ”¾å¼ƒåˆå¹¶
+        int allFinalCombine = 0;// æœ€ç»ˆåˆå¹¶çš„æ•°é‡
 
         foreach (var kv in bundleInfos)
         {
@@ -120,7 +120,7 @@ public class BuildTaskRegenerateAssetBundleName : BuildTask
                 foreach (var assetPath in bundleInfo.paths)
                 {
                     var assetInfo = assets[assetPath];
-                    //Debug.LogError(" È¡Ïû°üÃû"+assetInfo.assetPath+ " IsShareAsset " + assetInfo.IsShareAsset()+" bundle name"+ bundleName);
+                    //Debug.LogError(" å–æ¶ˆåŒ…å"+assetInfo.assetPath+ " IsShareAsset " + assetInfo.IsShareAsset()+" bundle name"+ bundleName);
                     assetInfo.CancelBundleName(globalBundleExtraAssets);
                 }
                 allCombines.Remove(bundleName);
@@ -180,7 +180,7 @@ public class BuildTaskRegenerateAssetBundleName : BuildTask
                 foreach (var assetPath in bundleInfo.paths)
                 {
                     var assetInfo = assets[assetPath];
-                    // Debug.LogError("Ç¿ÖÆ°üÃû "+assetInfo.assetPath+ " IsShareAsset " + assetInfo.IsShareAsset()+ "bundleName "+ bundleName);
+                    // Debug.LogError("å¼ºåˆ¶åŒ…å "+assetInfo.assetPath+ " IsShareAsset " + assetInfo.IsShareAsset()+ "bundleName "+ bundleName);
                    // if (assetInfo.IsShareAsset())
                     {
                         assetInfo.shareCombineAssetBundleName = combineAbName;
@@ -189,7 +189,7 @@ public class BuildTaskRegenerateAssetBundleName : BuildTask
                 }
             }
         }
-        Debug.Log($"×Ü¹²ÓĞshare abµÄÊıÁ¿ {allShareCount}£¬´óĞ¡ºÏ¸ñµÄÊıÁ¿ {allShareCanCombine}£¬ÒòÎªab Ì«Ğ¡£¬ÒıÓÃ¼ÆÊıÌ«ÉÙ¶ø±»È¡Ïû°üÃûµÄÊıÁ¿{allShareRemoveByNoName}£¬ÒòÎªÒıÓÃ¹ıÉÙ±»ÒÆ³ıºÏ²¢µÄÊıÁ¿ {allShareRmoveByRefrenceCountTooFew} ,×îÖÕ {allFinalCombine}¸öshare ab£¬ºÏ²¢³É{combineBundles.Count}¸ö share_combine,ÒòÎªÕâ´ÎºÏ²¢²Ù×÷£¬×Ü¹²¼õÉÙÁË{allShareRemoveByNoName + allFinalCombine - combineBundles.Count}¸ö share bundle");
+        Debug.Log($"æ€»å…±æœ‰share abçš„æ•°é‡ {allShareCount}ï¼Œå¤§å°åˆæ ¼çš„æ•°é‡ {allShareCanCombine}ï¼Œå› ä¸ºab å¤ªå°ï¼Œå¼•ç”¨è®¡æ•°å¤ªå°‘è€Œè¢«å–æ¶ˆåŒ…åçš„æ•°é‡{allShareRemoveByNoName}ï¼Œå› ä¸ºå¼•ç”¨è¿‡å°‘è¢«ç§»é™¤åˆå¹¶çš„æ•°é‡ {allShareRmoveByRefrenceCountTooFew} ,æœ€ç»ˆ {allFinalCombine}ä¸ªshare abï¼Œåˆå¹¶æˆ{combineBundles.Count}ä¸ª share_combine,å› ä¸ºè¿™æ¬¡åˆå¹¶æ“ä½œï¼Œæ€»å…±å‡å°‘äº†{allShareRemoveByNoName + allFinalCombine - combineBundles.Count}ä¸ª share bundle");
     }
 }
 

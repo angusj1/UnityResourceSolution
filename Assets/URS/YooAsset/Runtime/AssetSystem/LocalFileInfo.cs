@@ -121,7 +121,7 @@ namespace URS
             }
         }
         /// <summary>
-        /// ÎÄ¼ş´óĞ¡
+        /// æ–‡ä»¶å¤§å°
         /// </summary>
         public long SizeBytes
         {
@@ -150,12 +150,12 @@ namespace URS
     }
 
     /// <summary>
-    ///  ÓÅ»¯£º½á¹¹Ìå
+    ///  ä¼˜åŒ–ï¼šç»“æ„ä½“
     /// </summary>
     public class HardiskFileSearchResult
     {
         // <summary>
-        /// ±¾µØ´æ´¢µÄÂ·¾¶¡£ÓÀÔ¶²»Îª¿Õ£¬µ±RemoteDownloadURL ÎªnullÊ±£¬HardiskPath Îª×ÊÔ´±£´æµÄÊµ¼ÊÂ·¾¶£¬·ñÔòHardiskPath ÎªÏÂÔØÖ®ºóµÄ±£´æÂ·¾¶
+        /// æœ¬åœ°å­˜å‚¨çš„è·¯å¾„ã€‚æ°¸è¿œä¸ä¸ºç©ºï¼Œå½“RemoteDownloadURL ä¸ºnullæ—¶ï¼ŒHardiskPath ä¸ºèµ„æºä¿å­˜çš„å®é™…è·¯å¾„ï¼Œå¦åˆ™HardiskPath ä¸ºä¸‹è½½ä¹‹åçš„ä¿å­˜è·¯å¾„
         /// </summary>
         public string HardiskPath;
 
@@ -165,14 +165,14 @@ namespace URS
 
         //  public string RemoteFallBackDownloadURL;
 
-        public UpdateEntry UpdateEntry; // Ô¶¶ËÏÂÔÚĞÅÏ¢
+        public UpdateEntry UpdateEntry; // è¿œç«¯ä¸‹åœ¨ä¿¡æ¯
         /// <summary>
-        /// ÓÃÓÚ²éÑ¯µÄfileMeta
+        /// ç”¨äºæŸ¥è¯¢çš„fileMeta
         /// </summary>
         public FileMeta FileMeta;
 
         /// <summary>
-        /// ¿ì½İ¿ì½İ£¬¼ÇÂ¼HardiskPath×Ö¶ÎËùÊôµÄÎÄ¼ş¼ĞÀàĞÍ
+        /// å¿«æ·å¿«æ·ï¼Œè®°å½•HardiskPathå­—æ®µæ‰€å±çš„æ–‡ä»¶å¤¹ç±»å‹
         /// </summary>
         public EnumHardiskDirectoryType HardiskDirectoryType = EnumHardiskDirectoryType.Invalid;
 
@@ -184,7 +184,7 @@ namespace URS
             EMPTY = new HardiskFileSearchResult(string.Empty);
         }
         /// <summary>
-        /// ÎÄ¼ş¹şÏ£Öµ
+        /// æ–‡ä»¶å“ˆå¸Œå€¼
         /// </summary>
         public uint Hash
         {
@@ -198,7 +198,7 @@ namespace URS
         }
 
        ///// <summary>
-       ///// Ğ£ÑéµÄCRC
+       ///// æ ¡éªŒçš„CRC
        ///// </summary>
        //public string CRC
        //{
@@ -213,7 +213,7 @@ namespace URS
 
 
         /// <summary>
-        /// ÎÄ¼ş´óĞ¡
+        /// æ–‡ä»¶å¤§å°
         /// </summary>
         public long SizeBytes
         {
@@ -226,7 +226,7 @@ namespace URS
             }
         }
         /// <summary>
-		/// ÊÇ·ñÎª¼ÓÃÜÎÄ¼ş
+		/// æ˜¯å¦ä¸ºåŠ å¯†æ–‡ä»¶
 		/// </summary>
 		public bool IsEncrypted
         {
@@ -240,7 +240,7 @@ namespace URS
         }
 
         /// <summary>
-        /// ÊÇ·ñÎªÔ­ÉúÎÄ¼ş
+        /// æ˜¯å¦ä¸ºåŸç”Ÿæ–‡ä»¶
         /// </summary>
         public bool IsUnityBundle
         {
@@ -267,7 +267,7 @@ namespace URS
             return HardiskPath;
         }
         /// <summary>
-        /// ĞèÒªÔ¶³ÌÏÂÔØ
+        /// éœ€è¦è¿œç¨‹ä¸‹è½½
         /// </summary>
         /// <param name="fileMeta"></param>
         /// <param name="hardiskPath"></param>
@@ -285,7 +285,7 @@ namespace URS
             HardiskDirectoryType = EnumHardiskDirectoryType.Invalid;
         }
         /// <summary>
-        /// ²»ĞèÒªÔ¶³ÌÏÂÔØµÄ±¾µØºÏ·¨ÎÄ¼ş
+        /// ä¸éœ€è¦è¿œç¨‹ä¸‹è½½çš„æœ¬åœ°åˆæ³•æ–‡ä»¶
         /// </summary>
         /// <param name="fileMeta"></param>
         /// <param name="hardiskPath"></param>
@@ -303,7 +303,7 @@ namespace URS
             HardiskDirectoryType = hardiskDirectoryType;
         }
         /// <summary>
-        /// ²»ºÏ·¨µÄÎÄ¼ş
+        /// ä¸åˆæ³•çš„æ–‡ä»¶
         /// </summary>
         /// <param name="orignRelativePath"></param>
         /// <param name="hardiskPath"></param>

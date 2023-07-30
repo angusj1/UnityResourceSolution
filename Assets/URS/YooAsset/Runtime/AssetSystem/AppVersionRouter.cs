@@ -34,7 +34,7 @@ public class AppVersionRouter
         return DefaultVersion;
     }
     /// <summary>
-    /// ĞòÁĞ»¯
+    /// åºåˆ—åŒ–
     /// </summary>
     public static void Serialize(string savePath, AppVersionRouter router, bool pretty = false)
    {
@@ -42,7 +42,7 @@ public class AppVersionRouter
       FileUtility.CreateFile(savePath, json);
     }
   /// <summary>
-  /// ·´ĞòÁĞ»¯
+  /// ååºåˆ—åŒ–
   /// </summary>
   public static AppVersionRouter Deserialize(string jsonData)
   {

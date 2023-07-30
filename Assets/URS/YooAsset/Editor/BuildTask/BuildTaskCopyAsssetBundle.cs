@@ -95,7 +95,7 @@ public class BuildTaskCopyAsssetBundle : BuildTask
     }
     public void CopyBundleFilesToVersionFolder(string srcBundleFolder, BundleManifest bundleManifest)
     {
-        EditorUtility.DisplayProgressBar("CopyBundleFilesToVersionFolder", "Í¬²½µ½×îĞÂµÄÎÄ¼ş¼Ğ", 0);
+        EditorUtility.DisplayProgressBar("CopyBundleFilesToVersionFolder", "åŒæ­¥åˆ°æœ€æ–°çš„æ–‡ä»¶å¤¹", 0);
         var versionDirectory = GetData<string>(CONTEXT_VERSION_DIRECTORY);
         // versionDirectory = $"{versionDirectory}/{BuildTask.TEMP_VERSION_DIRECTORY}";
         Directory.CreateDirectory(versionDirectory);
@@ -140,7 +140,7 @@ public class BuildTaskCopyAsssetBundle : BuildTask
         Dictionary<string, AssetInfo> assets,
         out BundleManifest bundleManifest)
     {
-        EditorUtility.DisplayProgressBar("GenerateBundleManifest", "Éú³ÉbundleµÄ°æ±¾ĞÅÏ¢ÎÄ¼ş", 0);
+        EditorUtility.DisplayProgressBar("GenerateBundleManifest", "ç”Ÿæˆbundleçš„ç‰ˆæœ¬ä¿¡æ¯æ–‡ä»¶", 0);
         bundleManifest = new BundleManifest();
         List<AssetMeta> assetList = new List<AssetMeta>();
         // List<FileMeta> bundleList = new List<FileMeta>();

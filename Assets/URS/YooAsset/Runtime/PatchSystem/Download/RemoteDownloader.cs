@@ -47,19 +47,19 @@ namespace YooAsset
         private int _requestCount;
         private string _requestURL;
 
-        // ÖØÖÃ±äÁ¿
+        // é‡ç½®å˜é‡
         // private bool _isAbort = false;
         private long _latestDownloadBytes;
         private float _latestDownloadRealtime;
         private float _tryAgainTimer;
 
         /// <summary>
-        /// ÏÂÔØ½ø¶È£¨0-100f£©
+        /// ä¸‹è½½è¿›åº¦ï¼ˆ0-100fï¼‰
         /// </summary>
         public float DownloadProgress { private set; get; }
 
         /// <summary>
-        /// ÒÑ¾­ÏÂÔØµÄ×Ü×Ö½ÚÊı
+        /// å·²ç»ä¸‹è½½çš„æ€»å­—èŠ‚æ•°
         /// </summary>
         public long DownloadedBytes { private set; get; }
 
@@ -93,7 +93,7 @@ namespace YooAsset
             _isUnizipError = unziper.HasError();
             if (!_isUnizipError) 
             {
-               // Debug.LogError("ÏÂÔØÍêÁË..."+ _updateEntry.GetPatchFileMetaCandidate().RelativePath);
+               // Debug.LogError("ä¸‹è½½å®Œäº†..."+ _updateEntry.GetPatchFileMetaCandidate().RelativePath);
                 URSFileSystem.DownloadFolderRegisterVerifyFile(_updateEntry.GetPatchFileMetaCandidate());
             }
         }
@@ -104,10 +104,10 @@ namespace YooAsset
             if (_steps == ESteps.Failed || _steps == ESteps.Succeed)
                 return;
 
-            // ´´½¨ÏÂÔØÆ÷
+            // åˆ›å»ºä¸‹è½½å™¨
             if (_steps == ESteps.CreateDownload)
             {
-                // ÖØÖÃ±äÁ¿
+                // é‡ç½®å˜é‡
                 DownloadProgress = 0f;
                 DownloadedBytes = 0;
                 //_isAbort = false;
@@ -145,7 +145,7 @@ namespace YooAsset
                 _steps = ESteps.CheckDownload;
             }
 
-            // ¼ì²âÏÂÔØ½á¹û
+            // æ£€æµ‹ä¸‹è½½ç»“æœ
             if (_steps == ESteps.CheckDownload)
             {
                 // DownloadProgress = _webRequest.downloadProgress * 100f;
@@ -169,7 +169,7 @@ namespace YooAsset
                     CheckTimeout();
                     return;
                 }
-                // ¼ì²éÍøÂç´íÎó
+                // æ£€æŸ¥ç½‘ç»œé”™è¯¯
                 bool isError = true;
                 switch (_request.State)
                 {
@@ -197,7 +197,7 @@ namespace YooAsset
 
 
 
-                // ¼ì²éÎÄ¼şÍêÕûĞÔ
+                // æ£€æŸ¥æ–‡ä»¶å®Œæ•´æ€§
                 if (!isError)
                 {
                     if (!_useStream)
@@ -241,12 +241,12 @@ namespace YooAsset
                                 DeltaFileApplier.Apply(patchTargetTemp, _updateEntry.GetDownloadTempSaveFilePath(), targetPath);
                                 if (URSFileSystem.DownloadFolderCheckContentIntegrity(_updateEntry.RemoteFileMeta, targetPath))
                                 {
-                                   // Debug.Log("²¹¶¡³É¹¦ " + _updateEntry.RemoteFileMeta.RelativePath);
+                                   // Debug.Log("è¡¥ä¸æˆåŠŸ " + _updateEntry.RemoteFileMeta.RelativePath);
                                     URSFileSystem.DownloadFolderRegisterVerifyFile(_updateEntry.RemoteFileMeta);
                                 }
                                 else
                                 {
-                                    Debug.LogWarning("²¹¶¡Ê§°Ü" + _updateEntry.RemoteFileMeta.RelativePath);
+                                    Debug.LogWarning("è¡¥ä¸å¤±è´¥" + _updateEntry.RemoteFileMeta.RelativePath);
                                     isError = true;
                                     _lastError = $"Verification failed";
                                 }
@@ -275,7 +275,7 @@ namespace YooAsset
                             URSFileSystem.DownloadFolderRegisterVerifyFile(_updateEntry.RemoteFileMeta);
                             //if (URSFileSystem.DownloadFolderCheckContentIntegrity(_updateEntry.RemoteFileMeta, _updateEntry.GetLocalSaveFilePath()))
                             //{
-                            //    Debug.Log("È«ÎÄ¼şÏÂÔØ³É¹¦ " + _updateEntry.RemoteFileMeta.RelativePath);
+                            //    Debug.Log("å…¨æ–‡ä»¶ä¸‹è½½æˆåŠŸ " + _updateEntry.RemoteFileMeta.RelativePath);
                             //    URSFileSystem.DownloadFolderRegisterVerifyFile(_updateEntry.RemoteFileMeta);
                             //}
                             //else
@@ -289,21 +289,21 @@ namespace YooAsset
 
                 if (isError)
                 {
-                    // ×¢Òâ£ºÈç¹ûÎÄ¼şÑéÖ¤Ê§°ÜĞèÒªÉ¾³ıÎÄ¼ş
+                    // æ³¨æ„ï¼šå¦‚æœæ–‡ä»¶éªŒè¯å¤±è´¥éœ€è¦åˆ é™¤æ–‡ä»¶
                     ClearLocalSaveFile();
                     _steps = ESteps.Failed;
                 }
                 else
                 {
                     _steps = ESteps.Succeed;
-                    //Logger.Log($"ÏÂÔØÍê±Ï{_requestURL} ");
+                    //Logger.Log($"ä¸‹è½½å®Œæ¯•{_requestURL} ");
                 }
 
-                // ÊÍ·ÅÏÂÔØÆ÷
+                // é‡Šæ”¾ä¸‹è½½å™¨
                 DisposeRequest();
             }
 
-            // ÖØĞÂ³¢ÊÔÏÂÔØ
+            // é‡æ–°å°è¯•ä¸‹è½½
             //if (_steps == ESteps.TryAgain)
             //{
             //    _tryAgainTimer += Time.unscaledDeltaTime;
@@ -330,7 +330,7 @@ namespace YooAsset
                     long fileSize = FileUtility.GetFileSize(filePath);
                     if (fileSize == size)
                     {
-                        //Logger.Error($"ÑéÖ¤Ê§°Ü£¬ÎÄ¼ş´óĞ¡²»Í¨¹ı Ä¿±ê´óĞ¡ {size} £¬µ±Ç°ÎÄ¼ş´óĞ¡{fileSize}");
+                        //Logger.Error($"éªŒè¯å¤±è´¥ï¼Œæ–‡ä»¶å¤§å°ä¸é€šè¿‡ ç›®æ ‡å¤§å° {size} ï¼Œå½“å‰æ–‡ä»¶å¤§å°{fileSize}");
                         return true;
                     }
                 }
@@ -360,7 +360,7 @@ namespace YooAsset
         private string GetRequestURL()
         {
             return _updateEntry.GetRemoteDownloadURL() ;
-           // // ÂÖÁ÷·µ»ØÇëÇóµØÖ·
+           // // è½®æµè¿”å›è¯·æ±‚åœ°å€
            // if (_requestCount % 2 == 0)
            //     return _hardiskFileSearchResult.RemoteFallBackDownloadURL;
            // else
@@ -368,7 +368,7 @@ namespace YooAsset
         }
         private void CheckTimeout()
         {
-            // ×¢Òâ£ºÔÚÁ¬ĞøÊ±¼ä¶ÎÄÚÎŞĞÂÔöÏÂÔØÊı¾İ¼°ÅĞ¶¨Îª³¬Ê±
+            // æ³¨æ„ï¼šåœ¨è¿ç»­æ—¶é—´æ®µå†…æ— æ–°å¢ä¸‹è½½æ•°æ®åŠåˆ¤å®šä¸ºè¶…æ—¶
             if (_response == null&& _request!=null)
             {
                 if (_latestDownloadBytes != DownloadedBytes)
@@ -408,7 +408,7 @@ namespace YooAsset
        //}
 
         /// <summary>
-        /// »ñÈ¡×ÊÔ´°üĞÅÏ¢
+        /// è·å–èµ„æºåŒ…ä¿¡æ¯
         /// </summary>
         public UpdateEntry GetUpdateEntry()
         {
@@ -416,7 +416,7 @@ namespace YooAsset
         }
 
         /// <summary>
-        /// ¼ì²âÏÂÔØÆ÷ÊÇ·ñÒÑ¾­Íê³É£¨ÎŞÂÛ³É¹¦»òÊ§°Ü£©
+        /// æ£€æµ‹ä¸‹è½½å™¨æ˜¯å¦å·²ç»å®Œæˆï¼ˆæ— è®ºæˆåŠŸæˆ–å¤±è´¥ï¼‰
         /// </summary>
         public bool IsDone()
         {
@@ -424,7 +424,7 @@ namespace YooAsset
         }
 
         /// <summary>
-        /// ÏÂÔØ¹ı³ÌÊÇ·ñ·¢Éú´íÎó
+        /// ä¸‹è½½è¿‡ç¨‹æ˜¯å¦å‘ç”Ÿé”™è¯¯
         /// </summary>
         /// <returns></returns>
         public bool HasError()
@@ -433,7 +433,7 @@ namespace YooAsset
         }
 
         /// <summary>
-        /// ±¨¸æ´íÎóĞÅÏ¢
+        /// æŠ¥å‘Šé”™è¯¯ä¿¡æ¯
         /// </summary>
         public void ReportError()
         {

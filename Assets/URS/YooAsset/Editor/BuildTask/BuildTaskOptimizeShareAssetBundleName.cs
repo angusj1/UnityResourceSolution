@@ -157,7 +157,7 @@ public class BuildTaskOptimizeShareAssetBundleName : BuildTask
     }
     public void OptimizShareAssetBundleName()
     {
-        EditorUtility.DisplayProgressBar("BuildTaskOptimizeShareAssetBundleName", "优化包名", 0);
+        EditorUtility.DisplayProgressBar("BuildTaskOptimizeShareAssetBundleName", "浼樺寲鍖呭悕", 0);
 
         LoadConfig();
         var bundleInfo = GetData<Dictionary<string, BundleInfo>>(CONTEXT_BUNDLE_INFO);

@@ -21,7 +21,7 @@ public class BuildTaskValidateAnimation : BuildTask
     public override void BeginTask()
     {
         base.BeginTask();
-        EditorUtility.DisplayProgressBar("CheckAnimation", "ºÏ≤È∂Øª≠◊ ‘¥", 0);
+        EditorUtility.DisplayProgressBar("CheckAnimation", "Ê£ÄÊü•Âä®ÁîªËµÑÊ∫ê", 0);
         var assetInfos = this.GetData<Dictionary<string, AssetInfo>>(CONTEXT_ASSET_INFO);
         var propertyCheck = GetPropertyIsAnimatable();
         foreach (var assetPath in assetInfos.Keys)

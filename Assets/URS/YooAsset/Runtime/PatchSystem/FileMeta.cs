@@ -46,7 +46,7 @@ namespace URS
             }
             else
             {
-               // Debug.LogWarning("ÒÑ¾­´æÔÚ×ÊÔ´ÁË£º"+ fileMeta.RelativePath);
+               // Debug.LogWarning("å·²ç»å­˜åœ¨èµ„æºäº†ï¼š"+ fileMeta.RelativePath);
             }
         }
         public void RemoveFile(string relativePath)
@@ -57,7 +57,7 @@ namespace URS
             }
             else
             {
-                Debug.LogWarning("É¾³ı²»´æÔÚµÄ×ÊÔ´£º" + relativePath);
+                Debug.LogWarning("åˆ é™¤ä¸å­˜åœ¨çš„èµ„æºï¼š" + relativePath);
             }
         }
         public bool ContainFile(string relativePath,uint hash)
@@ -75,7 +75,7 @@ namespace URS
             return myFileMeta.Hash == other.Hash;
         }
         /// <summary>
-        /// ĞòÁĞ»¯
+        /// åºåˆ—åŒ–
         /// </summary>
         public static void Serialize(string savePath, FileManifest patchManifest,bool pretty=false)
         {
@@ -83,7 +83,7 @@ namespace URS
             FileUtility.CreateFile(savePath, json);
         }
         /// <summary>
-        /// ·´ĞòÁĞ»¯
+        /// ååºåˆ—åŒ–
         /// </summary>
         public static FileManifest Deserialize(string jsonData)
         {
@@ -137,13 +137,13 @@ namespace URS
 
 
         /// <summary>
-        /// ÊÇ·ñÎª¼ÓÃÜÎÄ¼ş
+        /// æ˜¯å¦ä¸ºåŠ å¯†æ–‡ä»¶
         /// </summary>
         public bool IsEncrypted;
 
 
         /// <summary>
-        /// ÊÇ·ñÎªBundleÎÄ¼ş
+        /// æ˜¯å¦ä¸ºBundleæ–‡ä»¶
         /// </summary>
         public bool IsUnityBundle;
     }
@@ -152,27 +152,27 @@ namespace URS
     public class FileMeta
     {
         /// <summary>
-        /// ÎÄ¼şÃû
+        /// æ–‡ä»¶å
         /// </summary>
         public string FileName;
 
         /// <summary>
-        /// ÎÄ¼şÃûÏà¶ÔÂ·¾¶
+        /// æ–‡ä»¶åç›¸å¯¹è·¯å¾„
         /// </summary>
         public string RelativePath;
 
         /// <summary>
-        /// ÎÄ¼ş¹şÏ£Öµ
+        /// æ–‡ä»¶å“ˆå¸Œå€¼
         /// </summary>
         public System.UInt32 Hash;
 
         /// <summary>
-        /// ÎÄ¼şĞ£ÑéÂë
+        /// æ–‡ä»¶æ ¡éªŒç 
         /// </summary>
         //public string CRC;
 
         /// <summary>
-        /// ÎÄ¼ş´óĞ¡£¨×Ö½ÚÊı£©
+        /// æ–‡ä»¶å¤§å°ï¼ˆå­—èŠ‚æ•°ï¼‰
         /// </summary>
         public long SizeBytes;
 
@@ -184,13 +184,13 @@ namespace URS
 
 
         /// <summary>
-        /// ÊÇ·ñÎª¼ÓÃÜÎÄ¼ş
+        /// æ˜¯å¦ä¸ºåŠ å¯†æ–‡ä»¶
         /// </summary>
         public bool IsEncrypted;
 
 
         /// <summary>
-        /// ÊÇ·ñÎªBundleÎÄ¼ş
+        /// æ˜¯å¦ä¸ºBundleæ–‡ä»¶
         /// </summary>
         public bool IsUnityBundle;
 
@@ -237,7 +237,7 @@ namespace URS
         }
 
         /// <summary>
-        /// ÊÇ·ñ°üº¬Tag
+        /// æ˜¯å¦åŒ…å«Tag
         /// </summary>
         public bool HasTag(string tag)
         {
@@ -253,7 +253,7 @@ namespace URS
             return false;
         }
         /// <summary>
-        /// ÊÇ·ñ°üº¬Tag
+        /// æ˜¯å¦åŒ…å«Tag
         /// </summary>
         public bool HasAnyTag(string[] tag)
         {

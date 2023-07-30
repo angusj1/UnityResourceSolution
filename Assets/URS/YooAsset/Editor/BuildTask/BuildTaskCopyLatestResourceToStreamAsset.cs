@@ -62,7 +62,7 @@ public class BuildTaskCopyLatestResourceToStreamAsset : BuildTask
             Directory.Delete(streamTarget,true);
         }
         var versionRootDirectory = (string)_context[CONTEXT_VERSION_ROOT_DIRECTORY];
-        // Èç¹ûÄãµÄunity°æ±¾²»Ö§³Ö buildPlayerContext.AddAdditionalPathToStreamingAssets ÇĞ»»µ½ CopyLatestResourceToStreamAssetº¯Êı¾ÍĞĞÁË
+        // å¦‚æœä½ çš„unityç‰ˆæœ¬ä¸æ”¯æŒ buildPlayerContext.AddAdditionalPathToStreamingAssets åˆ‡æ¢åˆ° CopyLatestResourceToStreamAssetå‡½æ•°å°±è¡Œäº†
         if (!string.IsNullOrEmpty(targetVersion) && _useLazyHook)
         {
             var tempFolder = Build.GetBuildInResourceTempFolder();

@@ -154,7 +154,7 @@ public class AssetInfo
             forceNoBundleName = true;
             foreach (var mainAbName in assetBundleNames)
             {
-               // Debug.Log($"È¡Ïû{assetPath}µÄ°üÃû,½øÈëµ½ bundle {mainAbName}" );
+               // Debug.Log($"å–æ¶ˆ{assetPath}çš„åŒ…å,è¿›å…¥åˆ° bundle {mainAbName}" );
                 globalBundleExtraAsset.AddBundleExtraAsset(mainAbName, assetPath);
             }
         }
